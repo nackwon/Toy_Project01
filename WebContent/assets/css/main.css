@@ -1,0 +1,50 @@
+@charset "UTF-8";
+
+.graph-area {
+	border: 1px solid gray;
+}
+
+.music-repository {
+	/* border: 1px solid gray; */
+}
+
+.login-list {
+	border: 1px solid gray;
+}
+
+.other-list {
+	border: 1px solid gray;
+}
+
+#input-form {
+	text-align: center;
+}
+
+#music-repository-table {
+	margine: 0 auto;
+	text-align: center;
+}
+
+#user-table {
+	margine: 0 auto;
+	text-align: center;
+	margin-top: 20px;
+}
+
+#input-form {margin-top: 10px; margin-bottom: 10px;}
+
+#music-repository-table {border-collapse: collapse;}
+#music-repository-table > thead > tr { background-color: #003311; color:#fff; }
+#music-repository-table > thead > tr > th { padding: 8px; width: 150px; }
+#music-repository-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+
+#user-table {border-collapse: collapse;}
+#user-table > thead > tr { background-color: #333; color:#fff; }
+#user-table > thead > tr > th { padding: 8px; width: 150px; }
+#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+
+/* #emphasis-list {
+	background-color: #e8eb70;
+} */
+
+

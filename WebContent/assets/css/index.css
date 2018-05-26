@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.container {
+	display: grid;
+	grid-template-columns: auto 400px 400px;
+    grid-template-rows: auto auto;
+    grid-gap: 3px;
+}
+
+/* .container .list-area {
+	display: grid;
+    grid-template-rows: auto;
+    grid-gap: 3px;
+}
+ */
