@@ -9,3 +9,6 @@
   * ORACLE
   * HTML5 / CSS / JavaScript
   * JSTL / AJAX / JSON
+  
+### 업데이트 
+  * 2018/05/26 - View 부분 완성
