@@ -25,10 +25,10 @@
 </head>
 <body>
 	<div id="mySidenav" class="sidenav">
-		<a href="#">
+		<a href="/Music_Finder/user?a=loginform">
 			<input type="button" value="Login" class="login"/>
 		</a>
-		<a href="#">
+		<a href="/Music_Finder/user?a=joinform">
 			<input type="button" value="Register"/>
 		</a>
 		
