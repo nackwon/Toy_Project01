@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,6 +21,9 @@
 			<p>Password</p>
 			<input type="password" id="userpw" name="userpw" placeholder="Enter Password"> <br>
 			<input onclick="login()" type="submit" value="Login"> <br>
+			 <c:if test="${param.result=='fail'}">
+                <P>로그인이 실패했습니다. 다시입력해주세요</P>
+               </c:if>
 			<a href="#">ForgetPassword</a>
 		</form>
 	</div>

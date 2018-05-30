@@ -114,6 +114,17 @@ input[type="button"]:hover {
 	color: black;
 	font-size: 16px;
 }
+.music-repository input[type="button"] {
+	margin-right: border: none;
+	align-content: center;
+	outline: none;
+	height: 30px;
+	width: 50%;
+	background: #0d0d0d;
+	color: #fff;
+	font-size: 13px;
+	border-radius: 10px;
+}
 
 .sidenav {
 	height: 100%;

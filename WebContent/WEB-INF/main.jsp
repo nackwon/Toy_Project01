@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,13 +20,22 @@
 </head>
 <body>
 	<div id="mySidenav" class="sidenav">
-
-        <a href="/Music_Finder/user?a=loginform" >
-			<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
-		</a>
-		<a href="/Music_Finder/user?a=joinform">
-			<input type="button" class="Register" value="Register"/>
-		</a>
+		<c:if test="${sessionScope == null }">
+	        <a href="/Music_Finder/user?a=loginform" >
+				<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
+			</a>
+			<a href="/Music_Finder/user?a=joinform">
+				<input type="button" class="Register" value="Register"/>
+			</a>
+		</c:if>
+		<c:if test="${sessionScope != null }">
+	        <a href="/Music_Finder/user?a=logout" >
+				<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="logout" class="logout"/>
+			</a>
+			<a href="/Music_Finder/user?a=myInfo">
+				<input type="button" class="myinfo" value="My Info"/>
+			</a>
+		</c:if>
 
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
@@ -35,7 +45,9 @@
 			<div id="input-form">
 				Search : <input type="text" id="keyword" />
 			</div>
-			<br>
+			<a href="/Music_Finder/user?a=insertMusic">
+				<input type="button" class="insertmusic" value="노래 넣기"/>
+			</a>
 			<table id="music-repository-table">
 				<thead>
 					<tr>
@@ -73,7 +85,7 @@
 
 		<!-- 다른 사람 리스트 -->
 		<div class="other-list">
-			Other User List ( id)
+			Other User List (id)
 
 			<table id="user-table">
 				<thead>

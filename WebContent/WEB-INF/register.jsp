@@ -16,9 +16,6 @@
 			<input type="text" name="username" placeholder="Enter Username" value="" />
 			<p>Password</p>
 			<input type="password" name="userpassword" placeholder="Enter UserPassword" />
-			   <c:if test="${param.result=='fail'}">
-                <P>로그인이 실패했습니다. 다시입력해주세요</P>
-               </c:if>
 			<input type="submit" name="submit" value="Register" /> <br/> 
 			<a href="/Music_Finder/user?a=loginform">go to Login</a>
 		</form>
