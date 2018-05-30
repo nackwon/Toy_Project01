@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import com.javaex.util.WebUtil;
 
+import kr.co.music.dao.PlayListDao;
 import kr.co.music.dao.UserDao;
 import kr.co.music.vo.UserVo;
 
@@ -52,6 +53,10 @@ public class UserController extends HttpServlet {
 	    	    System.out.println("login" + userVo.toString());
 	    	    WebUtil.redirect(request, response, "/Music_Finder/main"); 
 	    	 }	
+	    }else if("insertMusic".equals(actionName)) {
+	    	String path = this.getServletContext().getRealPath("WEB-INF/file/MusicList.csv");
+	    	PlayListDao dao = new PlayListDao();
+	    	dao.insertMusic(path);
 	    }
 	}
 

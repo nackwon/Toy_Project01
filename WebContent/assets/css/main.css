@@ -1,11 +1,23 @@
 @charset "UTF-8";
 
+.container {
+	display: grid;
+	grid-template-columns: auto 350px 350px;
+	grid-template-rows: auto auto;
+	grid-gap: 3px;
+}
+
+body {
+	font-family: sans-serif;
+}
+
 .graph-area {
 	border: 1px solid gray;
 }
 
 .music-repository {
 	/* border: 1px solid gray; */
+	
 }
 
 .login-list {
@@ -16,35 +28,133 @@
 	border: 1px solid gray;
 }
 
-#input-form {
-	text-align: center;
-}
-
 #music-repository-table {
-	margine: 0 auto;
 	text-align: center;
 }
 
 #user-table {
-	margine: 0 auto;
 	text-align: center;
 	margin-top: 20px;
 }
 
-#input-form {margin-top: 10px; margin-bottom: 10px;}
+#music-repository-table {
+	border-collapse: collapse;
+}
 
-#music-repository-table {border-collapse: collapse;}
-#music-repository-table > thead > tr { background-color: #003311; color:#fff; }
-#music-repository-table > thead > tr > th { padding: 8px; width: 150px; }
-#music-repository-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+#music-repository-table>thead>tr {
+	background-color: #003311;
+	color: #fff;
+}
 
-#user-table {border-collapse: collapse;}
-#user-table > thead > tr { background-color: #333; color:#fff; }
-#user-table > thead > tr > th { padding: 8px; width: 150px; }
-#user-table > tbody > tr > td { border-bottom: 1px solid gray; padding:8px; }
+#music-repository-table>thead>tr>th {
+	padding: 8px;
+	width: 150px;
+}
 
-/* #emphasis-list {
-	background-color: #e8eb70;
-} */
+#music-repository-table>tbody>tr>td {
+	border-bottom: 1px solid gray;
+	padding: 8px;
+}
 
+#user-table {
+	border-collapse: collapse;
+}
 
+#user-table>thead>tr {
+	background-color: #333;
+	color: #fff;
+}
+
+#user-table>thead>tr>th {
+	padding: 8px;
+	width: 150px;
+}
+
+#user-table>tbody>tr>td {
+	border-bottom: 1px solid gray;
+	padding: 8px;
+}
+
+input[type="button"] {
+	margin-right: border: none;
+	float: left;
+	outline: none;
+	height: 30px;
+	width: 49%;
+	background: #0d0d0d;
+	color: #fff;
+	font-size: 13px;
+	border-radius: 10px;
+}
+
+input[type="button"]:hover {
+	cursor: pointer;
+	background: #808080;
+}
+
+.closebtn {
+	padding: 8px 8px 8px 8px;
+	text-decoration: none;
+	font-size: 20px;
+	color: #818181;
+	display: block;
+	transition: 0.3s;
+}
+
+.closebtn:hover {
+	color: #f1f1f1;
+}
+
+.music-repository input[type="text"] {
+	border: none;
+	border-bottom: 1px solid black;
+	background: transparent;
+	outline: none;
+	height: 30px;
+	color: black;
+	font-size: 16px;
+}
+
+.sidenav {
+	height: 100%;
+	width: 0;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: white;
+	overflow-x: hidden;
+	transition: 0.5s;
+	padding-top: 60px;
+}
+
+.sidenav .closebtn {
+	position: absolute;
+	top: 0;
+	right: 25px;
+	font-size: 36px;
+	margin-left: 50px;
+}
+
+#input-form {
+	text-align: center;
+}
+
+#input-form {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#main {
+	transition: margin-left .5s;
+	padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+	.sidenav {
+		padding-top: 15px;
+	}
+	.sidenav a {
+		font-size: 18px;
+	}
+}

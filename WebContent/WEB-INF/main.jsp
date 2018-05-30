@@ -11,31 +11,27 @@
 
 <!-- border, 리스트 테이블 css -->
 <link rel="stylesheet" href="assets/css/main.css">
-<!-- css grid, 레이아웃 css -->
-<link rel="stylesheet" href="assets/css/index.css">
 <!-- d3js graph css -->
 <link rel="stylesheet" href="assets/css/graph.css">
 <!-- checkbox css -->
 <link rel="stylesheet" href="assets/css/checkbox.css">
-<!-- music-repository-search css -->
-<link rel="stylesheet" href="assets/css/searchnav.css">
-<!-- logout css -->
-<link rel="stylesheet" href="assets/css/logout.css">
 
 </head>
 <body>
 	<div id="mySidenav" class="sidenav">
-		<a href="/Music_Finder/user?a=loginform">
-			<input type="button" value="Login" class="login"/>
+
+        <a href="/Music_Finder/user?a=loginform" >
+			<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
 		</a>
 		<a href="/Music_Finder/user?a=joinform">
-			<input type="button" value="Register"/>
+			<input type="button" class="Register" value="Register"/>
 		</a>
-		
-		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 		<!-- 음악 저장소 -->
 		<div class="music-repository">
+            <br /><br />
 			<div id="input-form">
 				Search : <input type="text" id="keyword" />
 			</div>
@@ -43,7 +39,7 @@
 			<table id="music-repository-table">
 				<thead>
 					<tr>
-						<th>no</th>
+						<th>NO</th>
 						<th>TITLE</th>
 						<th>ARTIST</th>
 						<th>SAVE</th>
@@ -58,21 +54,19 @@
 	<div id="main">
 		<span style="font-size: 30px; cursor: pointer" onclick="openNav()">&#9776;</span>
 	</div>
-
 	<div class="container">
 		<!-- Search Side -->
 		<div class="graph-area">
-
 			<!-- CheckBox -->
 			<br>
 			<div class="checks">
-				<input type="checkbox" id="genre" name="genre" value="장르" checked="checked"> 
-				<label for="genre">장르</label> 
-				<input type="checkbox" id="artist" name="artist" value="가수"> 
-				<label for="artist">가수</label> 
+				<input type="checkbox" id="genre" name="genre" value="장르" checked="checked">
+				<label for="genre">장르</label>
+				<input type="checkbox" id="artist" name="artist" value="가수">
+				<label for="artist">가수</label>
 				<input type="checkbox" id="writer" name="writer" value="작사">
-				<label for="writer">작사</label> 
-				<input type="checkbox" id="composer" name="composer" value="작곡가"> 
+				<label for="writer">작사</label>
+				<input type="checkbox" id="composer" name="composer" value="작곡가">
 				<label for="composer">작곡가</label>
 			</div>
 		</div>

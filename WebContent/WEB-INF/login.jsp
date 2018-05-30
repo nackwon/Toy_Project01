@@ -15,12 +15,12 @@
 		<h2>Welcome to Music Finder</h2>
 		<br>
         <form method="post" action="/Music_Finder/user?a=login">
-		<p>Username</p>
-		<input type="text" id="userName" name="username" placeholder="Enter Username"> <br>
-		<p>Password</p>
-		<input type="password" id="userpw" name="userpw" placeholder="Enter Password"> <br>
-		<input onclick="login()" type="submit" value="Login"> <br>
-		<a href="#">ForgetPassword</a>
+			<p>Username</p>
+			<input type="text" id="userName" name="username" placeholder="Enter Username"> <br>
+			<p>Password</p>
+			<input type="password" id="userpw" name="userpw" placeholder="Enter Password"> <br>
+			<input onclick="login()" type="submit" value="Login"> <br>
+			<a href="#">ForgetPassword</a>
 		</form>
 	</div>
 </body>

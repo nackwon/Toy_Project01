@@ -9,17 +9,19 @@ import kr.co.music.connection.ConnectionManager;
 import kr.co.music.vo.UserVo;
 
 public class UserDao {
-
+	
+	// 회원가입
 	public void registerUser(UserVo userVo) {
 		ConnectionManager mgr = new ConnectionManager();
 		Connection con = mgr.getConnection();
-		String sql = "insert into users values(seq_users_no.nextval,?,?)";
+		String sql = "INSERT INTO users VALUES(seq_users_no.nextval,?,?)";
 		PreparedStatement pstmt = null;
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, userVo.getUserName());
 			pstmt.setString(2, userVo.getUserPw());
 			int affectedCount = pstmt.executeUpdate();
+			
 			if (affectedCount > 0) {
 				System.out.println("가입성공");
 			}
@@ -31,14 +33,15 @@ public class UserDao {
 			mgr.disConnection(con, pstmt, null);
 		}
 	}
-
+	
+	// 로그인
 	public UserVo loginUser(String username, String userpw) {
 		UserVo userVo = null;
 		ConnectionManager mgr = new ConnectionManager();
 		Connection con = mgr.getConnection();
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "select userno, username from users where username=? and userpw=?";
+		String sql = "SELECT userno, username FROM users WHERE username=? AND userpw=?";
 		try {
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, username);
