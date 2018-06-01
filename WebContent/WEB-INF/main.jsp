@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Music Finder</title>
 <!-- jQuery -->
 <script type="text/javascript" src="assets/js/jquery/jquery-1.9.0.js"></script>
 <!-- d3js -->
@@ -20,23 +20,25 @@
 </head>
 <body>
 	<div id="mySidenav" class="sidenav">
-		<c:if test="${sessionScope == null }">
-	        <a href="/Music_Finder/user?a=loginform" >
-				<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
-			</a>
-			<a href="/Music_Finder/user?a=joinform">
-				<input type="button" class="Register" value="Register"/>
-			</a>
-		</c:if>
-		<c:if test="${sessionScope != null }">
-	        <a href="/Music_Finder/user?a=logout" >
-				<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="logout" class="logout"/>
-			</a>
-			<a href="/Music_Finder/user?a=myInfo">
-				<input type="button" class="myinfo" value="My Info"/>
-			</a>
-		</c:if>
-
+		<c:choose>
+			<c:when test="${sessionScope.authUser == null}">
+				<a href="/Music_Finder/user?a=loginform" >
+					<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
+				</a>
+				<a href="/Music_Finder/user?a=joinform">
+					<input type="button" class="Register" value="Register"/>
+				</a>
+			</c:when>
+			<c:otherwise>
+				<a href="/Music_Finder/user?a=logout" >
+					<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="logout" class="logout"/>
+				</a>
+				<a href="/Music_Finder/user?a=myInfo">
+					<input type="button" class="myinfo" value="My Info"/>
+				</a>
+			</c:otherwise>
+		</c:choose>
+		
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 		<!-- 음악 저장소 -->
@@ -56,9 +58,17 @@
 						<th>ARTIST</th>
 						<th>SAVE</th>
 					</tr>
+					<c:forEach var="playlist" items="${playlist}" >
+					<tr>
+						<th>${playlist.musicno}</th>
+						<th>${playlist.title }</th>
+						<th>${playlist.artist }</th>
+						<th><input type="image" src="assets/img/plus.png"></th>
+					<tr>
+					</c:forEach>
+					
 				</thead>
 				<tbody id="music-repository-add-list">
-
 				</tbody>
 			</table>
 		</div>

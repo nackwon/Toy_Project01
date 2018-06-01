@@ -7,8 +7,14 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.StringJoiner;
+
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 
 import kr.co.music.connection.ConnectionManager;
 import kr.co.music.vo.PlayListVo;
@@ -24,6 +30,7 @@ public class PlayListDao {
 		return vo;
 	}
 
+	// DB에 파일 넣기
 	public boolean insertMusic(String path) {
 		boolean flag = false;
 		ConnectionManager mgr = new ConnectionManager();
@@ -85,5 +92,35 @@ public class PlayListDao {
 		}
 
 		return !flag;
+	}
+
+	// 리스트 보여주기
+	public JSONArray selectAllMusic() {
+		ConnectionManager mgr = new ConnectionManager();
+		Connection con = mgr.getConnection();
+		Statement stmt = null;
+		ResultSet rs = null;
+		JSONArray list = new JSONArray();
+		String SQL = "SELECT musicno, title, artist FROM playlist";
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery(SQL);
+
+			while (rs.next()) {
+				JSONObject jobj = new JSONObject();
+				jobj.put("musicno", rs.getInt(1));
+				jobj.put("title", rs.getString(2));
+				jobj.put("artist", rs.getString(3));
+				if (jobj != null)
+					list.add(jobj);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			mgr.disConnection(con, stmt, rs);
+		}
+
+		return list;
 	}
 }

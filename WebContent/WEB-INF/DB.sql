@@ -16,8 +16,8 @@ NOCACHE;
 --- playList ---
 CREATE TABLE playlist(
 	musicno NUMBER PRIMARY KEY,
-	title VARCHAR(50) NOT NULL,
-	artist VARCHAR(50) NOT NULL,
+	title VARCHAR(100) NOT NULL,
+	artist VARCHAR(100) NOT NULL,
 	genre VARCHAR(50) NOT NULL
 )
 
@@ -37,3 +37,6 @@ CREATE TABLE mylist(
 )
 
 DROP TABLE mylist
+DROP TABLE playlist
+DROP SEQUENCE seq_playlist_no
+SELECT * FROM playlist

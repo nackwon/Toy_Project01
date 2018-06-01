@@ -15,11 +15,6 @@ body {
 	border: 1px solid gray;
 }
 
-.music-repository {
-	/* border: 1px solid gray; */
-	
-}
-
 .login-list {
 	border: 1px solid gray;
 }
@@ -47,13 +42,8 @@ body {
 }
 
 #music-repository-table>thead>tr>th {
-	padding: 8px;
-	width: 150px;
-}
-
-#music-repository-table>tbody>tr>td {
-	border-bottom: 1px solid gray;
-	padding: 8px;
+	padding: 3px;
+	width: 200px;
 }
 
 #user-table {
@@ -66,13 +56,8 @@ body {
 }
 
 #user-table>thead>tr>th {
-	padding: 8px;
-	width: 150px;
-}
-
-#user-table>tbody>tr>td {
-	border-bottom: 1px solid gray;
-	padding: 8px;
+	padding: 5px;
+	width: 250px;
 }
 
 input[type="button"] {

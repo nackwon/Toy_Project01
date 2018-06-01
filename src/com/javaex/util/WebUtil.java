@@ -13,15 +13,10 @@ public class WebUtil {
 		//form
 		RequestDispatcher rd = request.getRequestDispatcher(path);
 		rd.forward(request, response);
-		
-		
 	}
 	
 	public static void redirect(HttpServletRequest request, HttpServletResponse response, String url) throws IOException {
-		
 		response.sendRedirect(url);
-		
-		
 	}
 	
 	

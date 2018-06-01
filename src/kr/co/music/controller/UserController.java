@@ -54,9 +54,9 @@ public class UserController extends HttpServlet {
 	    	    WebUtil.redirect(request, response, "/Music_Finder/main"); 
 	    	 }	
 	    }else if("insertMusic".equals(actionName)) {
-	    	/*String path = this.getServletContext().getRealPath("WEB-INF/file/MusicList.csv");
+	    	String path = this.getServletContext().getRealPath("WEB-INF/file/musiclist.csv");
 	    	PlayListDao dao = new PlayListDao();
-	    	dao.insertMusic(path);*/
+	    	dao.insertMusic(path);
 	    	System.out.println("값넣기");
 	    	WebUtil.redirect(request, response, "/Music_Finder/main");
 	    }else if("logout".equals(actionName)) {
