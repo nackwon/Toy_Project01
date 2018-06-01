@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
+	<a href="/Music_Finder/user?a=insertMusic">음악 DB에 넣기</a>
 </body>
 </html>
