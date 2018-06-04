@@ -28,7 +28,7 @@ NOCACHE;
 
 --- MyList ---
 CREATE TABLE mylist(
-	userno NUMBER PRIMARY KEY,
+	userno NUMBER,
 	musicno NUMBER,
 	CONSTRAINT u_music_fk FOREIGN KEY (userno)
 	REFERENCES users(userno),
@@ -36,7 +36,14 @@ CREATE TABLE mylist(
 	REFERENCES playlist(musicno)
 )
 
+SELECT * FROM mylist
+SELECT * FROM users
 DROP TABLE mylist
 DROP TABLE playlist
 DROP SEQUENCE seq_playlist_no
 SELECT * FROM playlist
+
+SELECT 
+(SELECT m.userno, m.musicno, p.title, p.artist
+FROM mylist m, playlist p
+WHERE m.userno = p.userno

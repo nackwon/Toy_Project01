@@ -22,18 +22,18 @@
 	<div id="mySidenav" class="sidenav">
 		<c:choose>
 			<c:when test="${sessionScope.authUser == null}">
-				<a href="/Music_Finder/user?a=loginform" >
+				<a href="${pageContext.request.contextPath}/user?a=loginform" >
 					<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="login" class="login"/>
 				</a>
-				<a href="/Music_Finder/user?a=joinform">
+				<a href="${pageContext.request.contextPath}/user?a=joinform">
 					<input type="button" class="Register" value="Register"/>
 				</a>
 			</c:when>
 			<c:otherwise>
-				<a href="/Music_Finder/user?a=logout" >
+				<a href="${pageContext.request.contextPath}/user?a=logout" >
 					<input style="margin-right:5px;"style="padding-top:8px;" type="button" value="logout" class="logout"/>
 				</a>
-				<a href="/Music_Finder/user?a=myInfo">
+				<a href="${pageContext.request.contextPath}/user?a=myInfo">
 					<input type="button" class="myinfo" value="My Info"/>
 				</a>
 			</c:otherwise>
@@ -42,12 +42,12 @@
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
 
 		<!-- 음악 저장소 -->
-		<div class="music-repository">
+		<div class="music-repository" id="music-list">
             <br /><br />
 			<div id="input-form">
 				Search : <input type="text" id="keyword" />
 			</div>
-			<a href="/Music_Finder/user?a=insertMusic">
+			<a href="${pageContext.request.contextPath}/user?a=insertMusic">
 				<input type="button" class="insertmusic" value="노래 넣기"/>
 			</a>
 			<table id="music-repository-table">
@@ -56,14 +56,18 @@
 						<th>NO</th>
 						<th>TITLE</th>
 						<th>ARTIST</th>
-						<th>SAVE</th>
+						<c:if test="${sessionScope.authUser != null }">
+							<th>SAVE</th>
+						</c:if>
 					</tr>
 					<c:forEach var="playlist" items="${playlist}" >
 					<tr>
 						<th>${playlist.musicno}</th>
 						<th>${playlist.title }</th>
 						<th>${playlist.artist }</th>
-						<th><input type="image" src="assets/img/plus.png"></th>
+						<c:if test="${sessionScope.authUser != null }">
+							<th><input id="imgbtn" type="image" src="assets/img/plus.png" value="${playlist.musicno}"></th>
+						</c:if>
 					<tr>
 					</c:forEach>
 					
@@ -115,8 +119,8 @@
 		<!-- 로그인 플레이 리스트 -->
 		<div class="login-list">
 			<!-- 로그인 시 유저 아이디를 뿌려줌 -->
-			My Music List (user id)
-
+			<div>${sessionScope.authUser.userName}님의 노래 리스트</div>
+			<input id="authuserno" type="hidden" value="${sessionScope.authUser.userNo }">
 			<table id="user-table">
 				<thead>
 					<tr>
@@ -144,6 +148,24 @@
 			document.getElementById("mySidenav").style.width = "0";
 			document.getElementById("main").style.marginLeft = "0";
 		}
+		
+		$("#music-list").on("click","input", function(){
+			var $musicno = $(this).val(),
+				$userno = $("#authuserno").val();
+			$.ajax({
+				url : "${pageContext.request.contextPath}/main",
+				type : "post",
+				dataType : "json",
+				data :{
+					a : "addMusic",
+					userno : $userno,
+					musicno : $musicno
+				},
+				success : function(mylist){
+					
+				}
+			});
+		});
 	</script>
 </body>
 </html>

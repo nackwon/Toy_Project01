@@ -22,10 +22,21 @@ public class MainController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
+		String acttionName = request.getParameter("a");
+		String url = "";
 		PlayListDao dao = new PlayListDao();
 		JSONArray list = dao.selectAllMusic();
 		request.setAttribute("playlist", list);
 		WebUtil.forward(request, response, "/WEB-INF/main.jsp");
+		
+		if("addMusic".equals(acttionName)) {
+			MyListDao mylistdao = new MyListDao();
+			int musicno = Integer.parseInt(request.getParameter("musicno"));
+			int userno = Integer.parseInt(request.getParameter("userno"));
+			mylistdao.musicAdd(userno, musicno);
+		} else if("removeMusic".equals(acttionName)) {
+			
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
