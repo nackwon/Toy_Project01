@@ -29,12 +29,9 @@ public class UserController extends HttpServlet {
 	    }else if("join".equals(actionName)) {
 	    	String username=request.getParameter("username");
 	    	String userpw=request.getParameter("userpassword");
-	    	System.out.println(username+" "+userpw);
 	    	UserVo userVo=new UserVo(username, userpw);
-	    	System.out.println(userVo.toString());
 	    	UserDao userDao=new UserDao();
 	    	userDao.registerUser(userVo);
-	    	System.out.println("가입성공");
 	    	WebUtil.redirect(request, response, "/Music_Finder/user?a=loginform");
 	    	
 	    }else if("loginform".equals(actionName)) {
@@ -50,14 +47,12 @@ public class UserController extends HttpServlet {
 	    	}else {
 	    		HttpSession session=request.getSession(); 
 	    	    session.setAttribute("authUser", userVo);
-	    	    System.out.println("login" + userVo.toString());
 	    	    WebUtil.redirect(request, response, "/Music_Finder/main"); 
 	    	 }	
 	    }else if("insertMusic".equals(actionName)) {
 	    	String path = this.getServletContext().getRealPath("WEB-INF/file/musiclist.csv");
 	    	PlayListDao dao = new PlayListDao();
 	    	dao.insertMusic(path);
-	    	System.out.println("값넣기");
 	    	WebUtil.redirect(request, response, "/Music_Finder/main");
 	    }else if("logout".equals(actionName)) {
 	    	HttpSession session = request.getSession();

@@ -56,17 +56,17 @@
 						<th>NO</th>
 						<th>TITLE</th>
 						<th>ARTIST</th>
-						<c:if test="${sessionScope.authUser != null }">
+						<c:if test="${sessionScope.authUser != null}">
 							<th>SAVE</th>
 						</c:if>
 					</tr>
 					<c:forEach var="playlist" items="${playlist}" >
 					<tr>
-						<th>${playlist.musicno}</th>
-						<th>${playlist.title }</th>
-						<th>${playlist.artist }</th>
+						<th>${playlist.musicNo}</th>
+						<th>${playlist.title}</th>
+						<th>${playlist.artist}</th>
 						<c:if test="${sessionScope.authUser != null }">
-							<th><input id="imgbtn" type="image" src="assets/img/plus.png" value="${playlist.musicno}"></th>
+							<th><input id="imgbtn" type="image" src="assets/img/plus.png" value="${playlist.musicNo}"></th>
 						</c:if>
 					<tr>
 					</c:forEach>
@@ -120,7 +120,7 @@
 		<div class="login-list">
 			<!-- 로그인 시 유저 아이디를 뿌려줌 -->
 			<div>${sessionScope.authUser.userName}님의 노래 리스트</div>
-			<input id="authuserno" type="hidden" value="${sessionScope.authUser.userNo }">
+			<input id="authuserno" type="hidden" value="${sessionScope.authUser.userNo}">
 			<table id="user-table">
 				<thead>
 					<tr>
@@ -139,6 +139,11 @@
 	<!-- close container -->
 
 	<script type="text/javascript">
+	
+		$(document).ready(function(){
+			mylistPrint();
+		});
+		
 		function openNav() {
 			document.getElementById("mySidenav").style.width = "350px";
 			document.getElementById("main").style.marginLeft = "350px";
@@ -149,23 +154,39 @@
 			document.getElementById("main").style.marginLeft = "0";
 		}
 		
-		$("#music-list").on("click","input", function(){
-			var $musicno = $(this).val(),
-				$userno = $("#authuserno").val();
-			$.ajax({
-				url : "${pageContext.request.contextPath}/main",
-				type : "post",
-				dataType : "json",
-				data :{
-					a : "addMusic",
-					userno : $userno,
-					musicno : $musicno
-				},
-				success : function(mylist){
-					
-				}
+		function mylistPrint(){
+			$("#music-list").on("click","input", function(){
+				var $musicno = $(this).val(),
+					$userno = $("#authuserno").val();
+				$.ajax({
+					url : "${pageContext.request.contextPath}/main",
+					type : "post",
+					dataType : "json",
+					data :{
+						a : "addMusic",
+						userno : $userno,
+						musicno : $musicno
+					},
+					success : function(list){
+						for(var i=0;i<list.length;i++){
+							mylist(list[i])
+						}
+					}
+				});
 			});
-		});
+		}
+		
+		function mylist(mylistvo){
+			var str = "";
+			str += "<tr>";
+			str += "	<td>"+1+"</td>";
+			str += "	<td>"+mylistvo.title+"</td>";
+			str += "	<td>"+mylistvo.artist+"</td>";
+			str += "	<td><input id='imgbtn' type='image' src='assets/img/plus.png' value='"+mylist.musicNo+"'></td>";
+			str += "</tr>";
+			
+			$("#login-add-list").append(str);
+		}
 	</script>
 </body>
 </html>

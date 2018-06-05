@@ -95,24 +95,23 @@ public class PlayListDao {
 	}
 
 	// 리스트 보여주기
-	public JSONArray selectAllMusic() {
+	public ArrayList<PlayListVo> selectAllMusic() {
 		ConnectionManager mgr = new ConnectionManager();
 		Connection con = mgr.getConnection();
 		Statement stmt = null;
 		ResultSet rs = null;
-		JSONArray list = new JSONArray();
+		ArrayList<PlayListVo> list = new ArrayList<PlayListVo>();
 		String SQL = "SELECT musicno, title, artist FROM playlist";
 		try {
 			stmt = con.createStatement();
 			rs = stmt.executeQuery(SQL);
 
 			while (rs.next()) {
-				JSONObject jobj = new JSONObject();
-				jobj.put("musicno", rs.getInt(1));
-				jobj.put("title", rs.getString(2));
-				jobj.put("artist", rs.getString(3));
-				if (jobj != null)
-					list.add(jobj);
+				PlayListVo vo = new PlayListVo();
+				vo.setMusicNo(rs.getInt(1));
+				vo.setTitle(rs.getString(2));
+				vo.setArtist(rs.getString(3));
+				list.add(vo);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
